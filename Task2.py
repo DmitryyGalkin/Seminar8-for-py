@@ -52,22 +52,36 @@ class Cell:
         return Cell(self.quantity + other.quantity)
 
     def __sub__(self, other):
-        return Cell(self.quantity - other.quantity)
+        return Cell(abs(self.quantity - other.quantity))
 
     def __mul__(self, other):
         return Cell(int(self.quantity * other.quantity))
 
     def __truediv__(self, other):
+        if other.quantity == 0:
+            print(f'Деление невозможно')
         return Cell(self.quantity // other.quantity)
 
-
+print("Создаем объекты клеток")
 cell1 = Cell(10)
 cell2 = Cell(3)
+cell3 = Cell(4)
+cell4 = Cell(2)
+print('Складываем')
 obj_cell = cell1 + cell2
-print(obj_cell.quantity)
-obj_cell = cell1 - cell2
-print(obj_cell.quantity)
+print(f'Сумма клеток: ({obj_cell.quantity})')
+print()
+print('Вычитаем')
+obj_cell = cell2 - cell1
+print(f'Разность клеток ({obj_cell.quantity})')
+obj_cell = cell4 - cell3
+print(f'Разность клеток ({obj_cell.quantity})')
+print('Умножаем')
 obj_cell = cell1 * cell2
-print(obj_cell.quantity)
+print(f'Умножение клеток  ({obj_cell.quantity})')
 obj_cell = cell1 / cell2
-print(obj_cell.quantity)
+print(f'Деление клеток {obj_cell.quantity}')
+
+
+
+
